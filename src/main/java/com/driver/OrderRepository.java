@@ -2,9 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class OrderRepository {
@@ -19,7 +17,9 @@ public class OrderRepository {
     HashMap<String,List<String>> partnertoordersdb = new HashMap<String, List<String>>();
 
     public void addorder(Order order){
-        orderdb.put(order.getId(),order);
+        if (Objects.nonNull(order)) {
+            orderdb.put(order.getId(), order);
+        }
     }
 
     public void addpartner(String partnerid){
