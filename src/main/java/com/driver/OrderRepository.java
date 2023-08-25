@@ -28,7 +28,7 @@ public class OrderRepository {
 
     public void addorderpairpartner(String orderid,String partnerid){
         if(orderdb.containsKey(orderid) && delpartnerdb.containsKey(partnerid)){
-            addorderpairpartner(orderid,partnerid);
+            orderpartnerdb.put(orderid,partnerid);
 
             //Now we need to update that partnertoorder db as well
 
