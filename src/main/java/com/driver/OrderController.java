@@ -1,6 +1,7 @@
 package com.driver;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,9 @@ public class OrderController {
     OrderService orderService;
     @PostMapping("/add-order")
     public ResponseEntity<String> addOrder(@RequestBody Order order){
-        orderService.addorders(order);
+        if(Objects.nonNull(order)) {
+            orderService.addorders(order);
+        }
         return new ResponseEntity<>("New order added successfully", HttpStatus.CREATED);
     }
 

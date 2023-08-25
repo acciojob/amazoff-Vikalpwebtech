@@ -17,9 +17,7 @@ public class OrderRepository {
     HashMap<String,List<String>> partnertoordersdb = new HashMap<String, List<String>>();
 
     public void addorder(Order order){
-        if (Objects.nonNull(order)) {
             orderdb.put(order.getId(), order);
-        }
     }
 
     public void addpartner(String partnerid){
