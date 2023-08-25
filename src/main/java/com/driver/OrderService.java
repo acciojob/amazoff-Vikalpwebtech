@@ -12,43 +12,43 @@ public class OrderService {
     OrderRepository orderRepository;
 
     public void addorders(Order order){
-        orderRepository.addOrder(order);
+        orderRepository.addorder(order);
     }
 
     public void adddelpartners(String partnerid){
-        orderRepository.addPartner(partnerid);
+        orderRepository.addpartner(partnerid);
     }
 
     public void addorderstopartner(String orderid,String partnerid){
-        orderRepository.addOrderPartnerPair(orderid,partnerid);
+        orderRepository.addorderpairpartner(orderid,partnerid);
     }
     public Order getorderbyid(String orderid){
-        return orderRepository.getOrderById(orderid);
+        return orderRepository.getorderbyid(orderid);
     }
     public DeliveryPartner getpartnerbyid(String partnerid){
-        return orderRepository.getPartnerById(partnerid);
+        return orderRepository.getpartnerbyid(partnerid);
     }
     public int getnooforder(String partnerid){
-        return orderRepository.getOrderCountByPartnerId(partnerid);
+        return orderRepository.numberoforders(partnerid);
     }
     public List<String> getorderlist(String partnerid){
-        return orderRepository.getOrdersByPartnerId(partnerid);
+        return orderRepository.getorderbypartnerid(partnerid);
     }
 
     public List<String> getallorders(){
-        return orderRepository.getAllOrders();
+        return orderRepository.getallorders();
     }
     public int numberofunassignedorder(){
-        return orderRepository.getCountOfUnassignedOrders();
+        return orderRepository.noofunassignedorders();
     }
     public int odersleftaftergiventime(String times,String partnerid){
         String time[] = times.split(":");
         int deliveryTime = Integer.valueOf(time[0])*60 +Integer.valueOf(time[1]);
-        return orderRepository.getOrdersLeftAfterGivenTimeByPartnerId(deliveryTime,partnerid);
+        return orderRepository.orderleftaftergiventime(deliveryTime,partnerid);
     }
 
     public String getLastDelieveryTime(String partnerid){
-        int time = orderRepository.getLastDeliveryTimeByPartnerId(partnerid);
+        int time = orderRepository.getlastdelieverytime(partnerid);
         String timehh = String.valueOf(time/60);
         String timemm = String.valueOf(time%60);
         if (timehh.length() < 2){
@@ -61,9 +61,9 @@ public class OrderService {
     }
 
     public void deletepartnerbyid(String partnerid){
-        orderRepository.deletePartnerById(partnerid);
+        orderRepository.deletepartner(partnerid);
     }
     public void deleteorder(String orderid){
-        orderRepository.deleteOrderById(orderid);
+        orderRepository.deleteorderbyid(orderid);
     }
 }
